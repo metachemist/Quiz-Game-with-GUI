@@ -37,6 +37,6 @@ class QuizUI {
         quizGame.setOptionButtons(optionButtons);
 
         quizLayout.getChildren().addAll(questionLabel, optionsBox, scoreLabel);
-        return new Scene(quizLayout, 800, 600);
+        return new Scene(quizLayout, 700, 500);
     }
 }

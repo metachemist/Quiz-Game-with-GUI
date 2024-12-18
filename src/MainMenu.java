@@ -38,6 +38,6 @@ class MainMenu {
         }
 
         mainLayout.getChildren().addAll(titleLabel, categoryButtonsBox);
-        return new Scene(mainLayout, 800, 600);
+        return new Scene(mainLayout, 700, 500);
     }
 }

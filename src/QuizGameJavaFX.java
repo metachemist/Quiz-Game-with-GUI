@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 import java.util.*;
 
 public class QuizGameJavaFX extends Application {
-
+    private String currentUser; // Store the logged-in user
     private int currentQuestionIndex = 0;
     private int score = 0;
     private List<Question> currentQuestions;
@@ -27,7 +27,6 @@ public class QuizGameJavaFX extends Application {
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Quiz Game");
 
-        
         // Initialize categories and questions
         initializeQuestions();
 
@@ -37,6 +36,27 @@ public class QuizGameJavaFX extends Application {
 
         primaryStage.setScene(loginScene);
         primaryStage.show();
+    }
+
+    public void setCurrentUser(String username) {
+        this.currentUser = username;
+    }
+
+    public void updateScore(int score) {
+        LoginUI loginUI = new LoginUI(this);
+        int currentScore = loginUI.getUserScore(currentUser);
+        loginUI.updateUserScore(currentUser, currentScore + score);
+    }
+
+    public void startMainMenu(Stage primaryStage) {
+        // Initialize categories and questions
+        initializeQuestions();
+
+        // Set up the main menu UI
+        MainMenu mainMenu = new MainMenu(categories, this);
+        Scene mainScene = mainMenu.createMainMenuScene(primaryStage);
+
+        primaryStage.setScene(mainScene);
     }
 
     private void initializeQuestions() {
