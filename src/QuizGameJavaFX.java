@@ -31,11 +31,11 @@ public class QuizGameJavaFX extends Application {
         // Initialize categories and questions
         initializeQuestions();
 
-        // Set up main menu UI
-        MainMenu mainMenu = new MainMenu(categories, this);
-        Scene mainScene = mainMenu.createMainMenuScene(primaryStage);
+        // Start with the Login UI
+        LoginUI loginUI = new LoginUI(this);
+        Scene loginScene = loginUI.createLoginScene(primaryStage);
 
-        primaryStage.setScene(mainScene);
+        primaryStage.setScene(loginScene);
         primaryStage.show();
     }
 
