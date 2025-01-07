@@ -89,7 +89,6 @@ public class LoginUI {
 
         // Feedback label for displaying login status
         Label feedbackLabel = new Label();
-
         // Login button logic
         loginButton.setOnAction(e -> {
             String username = usernameField.getText().trim();
@@ -142,6 +141,8 @@ public class LoginUI {
         Label feedbackLabel = new Label();
 
         // Registration button logic
+// ActionEvent is a class in JavaFX that represents an action event, such as a button click, menu selection, or other UI interactions.
+
         registerButton.setOnAction(e -> {
             String username = usernameField.getText().trim();
             String password = passwordField.getText().trim();
@@ -169,14 +170,4 @@ public class LoginUI {
         return new Scene(registerLayout, SCREEN_WIDTH, SCREEN_HEIGHT);
     }
 
-    // Get the score of a user by username
-    public int getUserScore(String username) {
-        return scores.getOrDefault(username, 0);
-    }
-
-    // Update the score of a user and save it to the file
-    public void updateUserScore(String username, int newScore) {
-        scores.put(username, newScore);
-        saveUserData();
-    }
 }

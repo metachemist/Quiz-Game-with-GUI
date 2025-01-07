@@ -15,7 +15,6 @@ class QuizUI {
 
     /**
      * Creates the quiz scene where the questions, options, and score are displayed.
-     *
      * @param primaryStage The main application window where the scene will be set.
      * @return A Scene object containing the quiz layout.
      */

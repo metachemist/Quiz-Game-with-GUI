@@ -19,27 +19,5 @@ public class User implements Serializable {
         this.lastScore = lastScore; // Set the user's last score.
     }
 
-    /**
-     * Gets the user's password.
-     * @return The password as a String.
-     */
-    public String getPassword() {
-        return password; // Return the password. Note: Be cautious with exposing passwords.
-    }
 
-    /**
-     * Gets the user's last score.
-     * @return The last score as an integer.
-     */
-    public int getLastScore() {
-        return lastScore; // Return the last recorded score.
-    }
-
-    /**
-     * Updates the user's last score.
-     * @param lastScore The new score to set.
-     */
-    public void setLastScore(int lastScore) {
-        this.lastScore = lastScore; // Update the last score with the new value.
-    }
 }

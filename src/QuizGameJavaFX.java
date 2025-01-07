@@ -1,8 +1,8 @@
 import javafx.application.Application;
-import javafx.geometry.Pos;
+
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.*;
+
 import javafx.stage.Stage;
 
 import java.io.*;
@@ -54,31 +54,9 @@ public class QuizGameJavaFX extends Application {
         this.currentUser = username;
     }
 
-    // Get the currently logged-in user
-    public String getCurrentUser() {
-        return this.currentUser;
-    }
+    // Play again
     public void setPlayAgainButton(Button playAgainButton) {
         this.playAgainButton = playAgainButton;
-    }
-
-
-    // Update the user's score and save the updated data to file
-    public void updateScore(int score) {
-        int currentScore = getUserScore(currentUser);
-        users.get(currentUser).setLastScore(currentScore + score);
-        saveUserDataToFile(); // Save updated scores to the file
-    }
-
-    // Handle end of game: update user score and save to file
-    public void endGame(int currentScore) {
-        if (currentUser != null) {
-            User user = users.get(currentUser);
-            if (user != null) {
-                user.setLastScore(currentScore); // Update the last score
-            }
-            saveUserDataToFile(); // Save updated user data to the file
-        }
     }
 
     // Start the main menu UI
@@ -140,16 +118,8 @@ public class QuizGameJavaFX extends Application {
 
             // Show the "Play Again" button
             playAgainButton.setVisible(true);
-
-            // Display last score if user exists
-            if (currentUser != null && users.containsKey(currentUser)) {
-                int lastScore = users.get(currentUser).getLastScore();
-                questionLabel.setText(questionLabel.getText() + "\nLast Score: " + lastScore);
-            }
         }
     }
-
-
 
     // Handle user answer and load the next question
     public void handleAnswer(String selectedAnswer, Stage primaryStage) {
@@ -160,21 +130,6 @@ public class QuizGameJavaFX extends Application {
         scoreLabel.setText("Score: " + score); // Update the score label
         currentQuestionIndex++; // Move to the next question
         loadNextQuestion(); // Load the next question
-    }
-
-    // Getter for question label
-    public Label getQuestionLabel() {
-        return questionLabel;
-    }
-
-    // Getter for option buttons
-    public Button[] getOptionButtons() {
-        return optionButtons;
-    }
-
-    // Getter for score label
-    public Label getScoreLabel() {
-        return scoreLabel;
     }
 
     // Setter for question label
@@ -190,28 +145,6 @@ public class QuizGameJavaFX extends Application {
     // Setter for score label
     public void setScoreLabel(Label scoreLabel) {
         this.scoreLabel = scoreLabel;
-    }
-
-    // Get the last score of a user
-    private int getUserScore(String username) {
-        if (users.containsKey(username)) {
-            return users.get(username).getLastScore();
-        }
-        return 0;
-    }
-
-    // Save user data to a file
-    private void saveUserDataToFile() {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("userdata.txt"))) {
-            for (Map.Entry<String, User> entry : users.entrySet()) {
-                String username = entry.getKey();
-                User user = entry.getValue();
-                writer.write(username + "," + user.getLastScore()); // Write username and score
-                writer.newLine(); // Move to the next line
-            }
-        } catch (IOException e) {
-            System.out.println("Error saving user data: " + e.getMessage());
-        }
     }
 
     // Load user data from a file

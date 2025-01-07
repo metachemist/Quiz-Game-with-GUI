@@ -18,6 +18,8 @@ class MainMenu {
     // Map storing categories and their corresponding list of questions
     private final Map<String, List<Question>> categories;
     // Reference to the QuizGameJavaFX object for handling game logic
+    //    String (key) har user ka unique identifier hota hai, jaise username.
+    //    User (value) ek object hota hai jo user ki details (e.g., username, score) ko represent karta hai.
     private final QuizGameJavaFX quizGame;
 
     /**
